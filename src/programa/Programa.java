@@ -2,11 +2,10 @@ package programa;
 
 import models.Candidato;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Programa {
+    private Map<Integer, Candidato> mapa = new HashMap<>();
     public static void main(String[] args) {
         Programa app = new Programa();
         app.start();
@@ -19,9 +18,11 @@ public class Programa {
         Candidato candidato3 = new Candidato(3,"Jose");
         Candidato candidato4 = new Candidato(4,"Antonio");
         Candidato candidato5 = new Candidato(5,"Tiburssinho");
-        List<Candidato>lista = new ArrayList<>();
+//        List<Candidato>lista = new ArrayList<>();
         List<Candidato>lista2 = new ArrayList<>();
-        lista.add(candidato1);lista.add(candidato2);lista.add(candidato3);lista.add(candidato4);lista.add(candidato5);
+
+        mapa.put(1,candidato1);mapa.put(2,candidato2);mapa.put(3,candidato3);mapa.put(4,candidato4);mapa.put(5,candidato5);
+//        lista.add(candidato1);lista.add(candidato2);lista.add(candidato3);lista.add(candidato4);lista.add(candidato5);
         System.out.println("Digite seu voto ou 0 para sair: ");
         int opcao = sc.nextInt();
         while (opcao!= 0){
@@ -58,17 +59,19 @@ public class Programa {
         if(opcao ==0){
 
             Candidato novo = null;
-            int n = lista.size();
+            int n = mapa.size();
+            Integer key = null;
             for (int i = 0; i < n; i++) {
                 int maior = 0;
-                for(Candidato candidato:lista){
+                for(Candidato candidato:mapa.values()){
                     if(candidato.getVoto()>=maior){
                         maior = candidato.getVoto();
+                        key = candidato.getId();
                         novo = candidato;
 
                     }
                 }
-                lista.remove(novo);
+                mapa.remove(key,novo);
                 lista2.add(novo);
 
             }
