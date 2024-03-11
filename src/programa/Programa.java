@@ -28,19 +28,24 @@ public class Programa {
             if (opcao == 1){
                 int contagem = candidato1.getVoto() + 1;
                 candidato1.setVoto(contagem);
+                System.out.println("Obrigado seu voto foi registrado!");
             } else if (opcao == 2) {
                 int contagem = candidato2.getVoto() + 1;
                 candidato2.setVoto(contagem);
+                System.out.println("Obrigado seu voto foi registrado!");
 
             }else if (opcao == 3) {
                 int contagem = candidato3.getVoto() + 1;
                 candidato3.setVoto(contagem);
+                System.out.println("Obrigado seu voto foi registrado!");
             }else if (opcao == 4) {
                 int contagem = candidato4.getVoto() + 1;
                 candidato4.setVoto(contagem);
+                System.out.println("Obrigado seu voto foi registrado!");
             }else if (opcao == 5) {
                 int contagem = candidato5.getVoto() + 1;
                 candidato5.setVoto(contagem);
+                System.out.println("Obrigado seu voto foi registrado!");
             } else {
                 System.out.println("Opcao não existe");
             }
@@ -51,11 +56,14 @@ public class Programa {
         }
 
         if(opcao ==0){
-            int maior = 0;
+
             Candidato novo = null;
-            for (int i = 0; i < lista.size(); i++) {
+            int n = lista.size();
+            for (int i = 0; i < n; i++) {
+                int maior = 0;
                 for(Candidato candidato:lista){
-                    if(candidato.getVoto()>maior){
+                    if(candidato.getVoto()>=maior){
+                        maior = candidato.getVoto();
                         novo = candidato;
 
                     }
@@ -64,7 +72,11 @@ public class Programa {
                 lista2.add(novo);
 
             }
-            
+            System.out.println("o candidato eleito é o : " + lista2.get(0).getNome());
+            for(Candidato candidato:lista2){
+                int lugar = (int) lista2.indexOf(candidato) + 1;
+                System.out.println("lugar "+ lugar + ": " + candidato.getNome() + " , " + candidato.getVoto() + " votos");
+            }
 
         }
     }
